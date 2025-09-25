@@ -9,7 +9,7 @@ export class DataForSEOClient {
     if(defaultGlobalToolConfig.debug) {
       console.error('DataForSEOClient initialized with config:', config);
     }
-    const token = btoa(`${config.username}:${config.password}`);
+    const token = Buffer.from(`${config.username}:${config.password}`, 'utf-8').toString('base64');
     this.authHeader = `Basic ${token}`;
   }
 
